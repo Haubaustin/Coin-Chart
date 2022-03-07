@@ -15,8 +15,11 @@ button.addEventListener('click', async () =>{
     const input = userInput.value
     const response = await axios.get(`https://api.coingecko.com/api/v3/search?query=${input}`)
     for (let i=0; i<response.data.coins.length; i++) {
-        const results = document.createElement('li')   
+        const results = document.createElement('li') 
+        const thumb = document.createElement('span')
         results.innerHTML =(`${response.data.coins[i].symbol}, ${response.data.coins[i].name}`)
+        thumb.innerHTML = `<img src="${response.data.coins[i].thumb}"</img>`
         leftColumn.append(results)
-    console.log(response) 
+        results.append(thumb)
+    console.log(response, thumb.innerHTML) 
 }})

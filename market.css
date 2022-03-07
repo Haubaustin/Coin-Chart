@@ -19,6 +19,9 @@
     height: 30px;
     display: block;
     background-color: grey;
+    padding: 10px 10px 10px 10px;
+    height: 20px;
+
 }
 
 h1 {
@@ -31,16 +34,7 @@ h3 {
     padding-top: 10px;
     margin: 0;
 }
-
-li:nth-child(1) {
-    padding: 10px 10px 10px 10px;
-    height: 20px;
-}
-
-li:nth-child(2) {
-    padding: 10px 10px 10px 10px;
-    height: 20px;
-}
+    
 
 #page {
     display: grid;
@@ -57,6 +51,16 @@ li:nth-child(2) {
     text-align: center; 
 }
 
+#searchResults {
+    list-style: none;
+    margin: auto;
+    padding-inline-start: 0px;
+}
+
+#searchResults > li {
+    height: 35px;
+    border-bottom: 1px solid black;
+}
 
 #navigation {
     list-style: none;
