@@ -8,8 +8,10 @@ const leftColumn = document.querySelector('#searchResults')
 // Chart explainer https://www.anychart.com/blog/2021/07/28/line-chart-js/
 //`https://api.coingecko.com/api/v3/simple/price?ids=${input}&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`
 
+
+//Event listener for search bar on Homepage
 button.addEventListener('click', async () =>{ 
-    while (leftColumn.firstChild) {
+    while (leftColumn.firstChild) { //Removes previous searches
         leftColumn.firstChild.remove()
     }
     const input = userInput.value
@@ -21,5 +23,5 @@ button.addEventListener('click', async () =>{
         thumb.innerHTML = `<img src="${response.data.coins[i].thumb}"</img>`
         leftColumn.append(results)
         results.append(thumb)
-    console.log(response, thumb.innerHTML) 
+    console.log(response) 
 }})

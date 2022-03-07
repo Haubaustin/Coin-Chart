@@ -2,14 +2,19 @@
     grid-row-start: 2;
     height: auto;
     text-align: center;
-    border: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
     margin-left: 40px;
 }
 #columnR {
     grid-row-start: 2;
     height: auto;
     text-align: center;
-    border: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
     margin-right: 40px;
 }
 
@@ -58,8 +63,12 @@ h3 {
 }
 
 #searchResults > li {
-    height: 35px;
+    height: 40px;
     border-bottom: 1px solid black;
+}
+
+span > img {
+    margin: 8px 0px 0px 10px;
 }
 
 #navigation {
