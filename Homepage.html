@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="market.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="market.css" type="text/css" media="screen" title="no title"
+    charset="utf-8"/>
+    <title>Home Page</title>
+</head>
+<body>
+    <header>
+        <h1>Coin Chart</h1>
+        <nav>
+            <ul>
+                <li>Coin Search</li>
+                <li>Coin Charts</li>
+            </ul>
+        </nav>
+    </header>
+    <div id = page>
+        <div id = Search>
+            <input type="text">
+            <button>Search</button>
+        </div>
+        <div id = columnL>
+            <h3>Search Results</h3>
+            <ul id = searchResults></ul>
+        </div>
+        <div id = columnR>
+            <h3>Market Data</h3>
+        </div>
+    </div>
+</body>
+</html>
