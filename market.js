@@ -1,7 +1,7 @@
 const Domain = "https://api.coingecko.com/api/v3/"
 const userInput = document.querySelector('input')
 const button = document.querySelector('button')
-const leftColumn = document.querySelector('#columnL')
+const leftColumn = document.querySelector('#searchResults')
 //coins/{coinId}/market_chart returns market chart using UNIX timestamps
         //coins/bitcoin/market_chart?vs_currency=usd&days=14&interval=daily'
 //parseInt((new Date('YYYY.MM.DD').getTime() / 1000).toFixed(0)) UNIX timestamp converter also check Date.Parse
@@ -14,8 +14,9 @@ button.addEventListener('click', async () =>{
     }
     const input = userInput.value
     const response = await axios.get(`https://api.coingecko.com/api/v3/search?query=${input}`)
-    //for (let i=0; i<response.data.coins.length; i++)
-    //const results = document.createElement('li')   
-    //results.innerHTML =
+    for (let i=0; i<response.data.coins.length; i++) {
+        const results = document.createElement('li')   
+        results.innerHTML =(`${response.data.coins[i].symbol}, ${response.data.coins[i].name}`)
+        leftColumn.append(results)
     console.log(response) 
-})
+}})

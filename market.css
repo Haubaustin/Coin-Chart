@@ -1,16 +1,24 @@
 #columnL {
     grid-row-start: 2;
-    height: 400px;
+    height: auto;
     text-align: center;
     border: 1px solid black;
     margin-left: 40px;
 }
 #columnR {
     grid-row-start: 2;
-    height: 400px;
+    height: auto;
     text-align: center;
     border: 1px solid black;
     margin-right: 40px;
+}
+
+.directory {
+    float: left;
+    border: 1px solid black;
+    height: 30px;
+    display: block;
+    background-color: grey;
 }
 
 h1 {
@@ -23,15 +31,6 @@ h3 {
     padding-top: 10px;
     margin: 0;
 }
-
-li {
-    float: left;
-    border: 1px solid black;
-    height: 30px;
-    display: block;
-    background-color: grey;
-}
-
 
 li:nth-child(1) {
     padding: 10px 10px 10px 10px;
@@ -59,7 +58,7 @@ li:nth-child(2) {
 }
 
 
-ul {
+#navigation {
     list-style: none;
     display: flex;
     justify-content: center;
