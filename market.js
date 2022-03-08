@@ -23,5 +23,11 @@ button.addEventListener('click', async () =>{
         thumb.innerHTML = `<img src="${response.data.coins[i].thumb}"</img>`
         leftColumn.append(results)
         results.append(thumb)
+        results.addEventListener('click', sayHello) //Adds event listener to appended DOM element
     console.log(response) 
 }})
+
+function sayHello () {
+    console.log('Youre smart af')
+}
+
