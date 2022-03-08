@@ -5,17 +5,26 @@
     border-left: 1px solid black;
     border-top: 1px solid black;
     border-right: 1px solid black;
+    border-bottom: 1px solid black;
     margin-left: 40px;
+    border-top-left-radius: 1em;
 }
 #columnR {
     grid-row-start: 2;
     height: auto;
     text-align: center;
     border-right: 1px solid black;
-    border-bottom: 1px solid black;
     border-left: 1px solid black;
     border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-bottom: .5em;
     margin-right: 40px;
+    border-top-right-radius: 1em;
+}
+
+#columnR > div {
+    margin-left: .5em;
+    margin-right: .5em;
 }
 
 .directory {
@@ -27,6 +36,10 @@
     padding: 10px 10px 10px 10px;
     height: 20px;
 
+}
+
+#description {
+    margin-bottom: 0em;
 }
 
 h1 {
@@ -69,6 +82,15 @@ h3 {
 
 span > img {
     margin: 8px 0px 0px 10px;
+}
+
+div > table {
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .5em;
+    text-align: left;
+    margin-top: .5em;
 }
 
 #navigation {
