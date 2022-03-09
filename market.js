@@ -28,20 +28,11 @@ async function moveData () {                            //Function to expand inf
     marketHead.innerHTML =(`${response.data.coins[i].name}`)
     rightColumn.append(marketHead)
     marketData.innerHTML = (`<img src="${marketResponse.data.image.small}"</img><br> 
-        <strong><button id = 'desc'>Toggle Description:</button> </strong><p style="display:none;" id = description>${marketResponse.data.description.en}</p> <br> 
+        <details><summary><strong>Description</strong></summary>${marketResponse.data.description.en}</details> <br> 
         <table><tr> <td><strong>Current Price:</strong> $${marketResponse.data.market_data.current_price.usd}</td> <td><strong>Hourly Change:</strong> ${marketResponse.data.market_data.price_change_percentage_1h_in_currency.usd}%</td> <td><strong>24hr Change:</strong> ${marketResponse.data.market_data.price_change_percentage_24h}%, $${marketResponse.data.market_data.price_change_24h}</td></tr>
         <tr> <td><strong>Market Cap:</strong> $${marketResponse.data.market_data.market_cap.usd}</td> <td><strong>Circulating Supply:</strong> ${marketResponse.data.market_data.circulating_supply}</td> <td><strong>Max Supply:</strong> ${marketResponse.data.market_data.max_supply}</td></tr>
         <tr> <td><strong>ATH:</strong> $${marketResponse.data.market_data.ath.usd}</td> <td><strong>Off ATH:</strong> ${marketResponse.data.market_data.ath_change_percentage.usd}%</td> <td><strong>Updated:</strong> ${marketResponse.data.last_updated}</tr></table>`)
-    rightColumn.append(marketData)
-
-    const description = document.querySelector('#description')
-        document.querySelector("#desc").addEventListener('click', () => {
-            if (description.style.display !== "none") {
-                description.style.display = "none"
-            } else {
-                description.style.display = "block"
-            }
-        })
+    rightColumn.append(marketData)        
     console.log(marketResponse)
     }
 }
