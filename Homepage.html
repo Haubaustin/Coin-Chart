@@ -8,23 +8,31 @@
     <script defer src="market.js" charset="utf-8"></script>
     <link rel="stylesheet" href="market.css" type="text/css" media="screen" title="no title"
     charset="utf-8"/>
-    <title>Home Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>  
+<title>Coin Chart</title>
 </head>
 <body>
     <header>
-        <h1>Coin Chart</h1>
+        <nav>
+            <img src="https://as1.ftcdn.net/v2/jpg/02/79/99/64/1000_F_279996416_UsGeKtSajJN6IRa6or0gAseYwO26SlNn.jpg">
+            <h1> Coin Chart</h1>
+        </nav>
     </header>
     <div id = page>
         <div id = Search>
-            <input type="text">
+            <input type="text" placeholder = "Search Crypto Here">
             <button>Search</button>
         </div>
         <div id = columnL>
             <h3>Search Results</h3>
-            <ul id = searchResults></ul>
+            <ul id = searchResults ></ul>
         </div>
         <div id = columnR>
-            <h3>Market Data</h3>
+            <h3>Market Data <span><button id = 'Clear'>Clear Column</button></span></h3>
+            <div class = "list"></div>
         </div>
     </div>
 </body>

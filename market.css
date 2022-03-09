@@ -1,22 +1,50 @@
 body {
     margin: 0;
+    background-color: #3d3d3d9f;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-button {
+body > header > nav > img {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #adadad3f;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+#Clear {
+    background-color: #d1d1d19f;
     cursor: pointer;
+    box-shadow: #f7f5f571 0 -12px 6px inset;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    font: 1em;
+    border-radius: 15%;
+}
+
+#Clear:hover {
+    background-color: #ffffffab;
+    box-shadow: #4949498f 0 -6px 8px inset;
+    transform: scale(1.05);
+}
+  
+#Clear:active {
+    transform: scale(1.00);
 }
 
 #columnL {
     grid-row-start: 2;
     height: auto;
     text-align: center;
-    border-left: 2px solid black;
-    border-top: 2px solid black;
+    border-left: 3px solid black;
+    border-top: 3px solid black;
     border-right: 1px solid black;
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid black;
     margin-left: 40px;
     border-top-left-radius: 1em;
     border-bottom-left-radius: 1em;
+    background: #b8b8b8b6;
+    margin-bottom: 40px;
 }
 
 
@@ -24,14 +52,16 @@ button {
     grid-row-start: 2;
     height: auto;
     text-align: center;
-    border-right: 2px solid black;
+    border-right: 3px solid black;
     border-left: 1px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
     padding-bottom: .5em;
     margin-right: 40px;
     border-top-right-radius: 1em;
     border-bottom-right-radius: 1em;
+    background: #b8b8b8b6;
+    margin-bottom: 40px;
 }
 
 #columnR > div {
@@ -39,8 +69,20 @@ button {
     margin-right: 2em;
 }
 
-#columnR > div > details > summary > strong {
+#columnR > div > div > details > summary > strong {
     cursor: pointer;
+}
+
+#columnR > div > div > details > a {
+    color: white;
+}
+
+#columnR > h3 > span {
+    padding-left: 15px;
+}
+
+#columnR > h3 {
+    padding-left: 30px;
 }
 
 .directory {
@@ -56,35 +98,48 @@ button {
     margin-bottom: 0em;
 }
 
+div > table {
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: .5em;
+    text-align: left;
+    margin-top: .5em;
+}
 
 h1 {
+    font-size: 40px;
     margin: 0px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 3px solid black;
-    background-color: aliceblue;
-    text-align: center;
-    border-radius: 15%;
-    padding: 10px 10px 10px 10px;
-    font-size: 5em;
+    padding-top: 3px;
+    padding-left: 5px;
+    color: white;
 }
 
 h3 {
     border-bottom: 1px solid black;
     padding-bottom: 10px;
     padding-top: 10px;
+    height: 45px;
 }
 
 header {
-    background-repeat: no-repeat;
-    position: relative;
     margin: 0px;
     height: 350px;
-    background-size: cover;
+    background-color: #3d3d3dbd;
 }
-    
+
+input {
+    background-color: #b8b8b8b6;
+}
+
+nav {
+    display: flex;
+    vertical-align: top;
+    width: 100%;
+    align-items: center;
+    background-color: rgb(49, 48, 48);
+    border-bottom: solid black;
+}
 
 #page {
     display: grid;
@@ -103,6 +158,40 @@ header {
     padding-top: 15px;
 }
 
+#Search > button {
+    background-color: #d1d1d19f;
+    cursor: pointer;
+    box-shadow: #f7f5f571 0 -12px 6px inset;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+    font: 1em;
+    border-radius: 15%;
+}
+
+#Search > button:hover {
+    background-color: #ffffffab;
+    box-shadow: #4949498f 0 -6px 8px inset;
+    transform: scale(1.05);
+  }
+  
+#Search > button:active {
+    transform: scale(1.00);
+  }
+
+#Search > input {
+    color: black;
+    font-family: 'Source Sans Pro', sans-serif;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 2px solid black;
+
+}
+
+#Search > input::placeholder {
+    color: black;
+}
+
 #searchResults {
     list-style: none;
     margin: auto;
@@ -117,19 +206,9 @@ header {
 
 #searchResults > li:last-child {
     height: 40px;
-    border-bottom: none;
+    border-bottom: 1px solid black;
 }
 
 span > img {
     margin: 8px 0px 0px 10px;
 }
-
-div > table {
-    border: 1px solid black;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: .5em;
-    text-align: left;
-    margin-top: .5em;
-}
-
