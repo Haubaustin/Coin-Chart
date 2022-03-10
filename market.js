@@ -5,10 +5,28 @@ const leftColumn = document.querySelector('#searchResults')
 const rightColumn = document.querySelector('#columnR')
 const clearColumn = document.querySelector('#Clear')
 const rightList = document.querySelector('.list')
-// Chart explainer https://www.anychart.com/blog/2021/07/28/line-chart-js/
+const trendingList = document.querySelector('#topleft')
+
+window.onload = async () => {
+    const trending = await axios.get(`https://api.coingecko.com/api/v3/search/trending`)
+    for (let i=0; i<trending.data.coins.length; i++) {
+        const trend = document.createElement('div') 
+        trend.innerHTML = `<h4 class = trendingName>${trending.data.coins[i].item.name}</h4><br>${trending.data.coins[i].item.symbol}<br>MCAP Rank: ${trending.data.coins[i].item.market_cap_rank}<br><img src = "${trending.data.coins[i].item.small}"</img>`
+        trend.classList.add("trending")
+        trendingList.append(trend)
+    }
+    console.log(trending)
+
+}
+
+
+
+
+
+
 
 clearColumn.addEventListener('click', () => {
-    while (rightList.firstChild) {                     //Removes previous searches
+    while (rightList.firstChild) {                     //Removes previous searches Right Column
         rightList.firstChild.remove()
     } 
 })
@@ -43,6 +61,7 @@ async function moveData () {                            //Function to expand inf
     rightList.append(marketData)
     makeChart()        
     }
+
 async function makeChart () {                           //AnyChart Function. Loaded from AnyChart Module
     const chartInput = `${response.data.coins[i].id}`
     const chartResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${chartInput}/market_chart?vs_currency=usd&days=1&interval=hourly`)
@@ -51,13 +70,12 @@ async function makeChart () {                           //AnyChart Function. Loa
     for (let i=0; i<chartData.length; i++) {
         let nDate1 = chartData[i][0]
         let nDate = new Date(nDate1)
-        chartData[i][0] = nDate
-
+        chartData[i][0] = nDate.toString()
       }
 
-    function getData() {
-        return chartData     
-    }
+     function getData() {
+         return chartData     
+     }
     
     const data = anychart.data.set(getData())
     const dataMap = data.mapAs({x:0, value:1})
@@ -67,6 +85,7 @@ async function makeChart () {                           //AnyChart Function. Loa
         chart.draw()
         chart.yAxis().title('Price')
         chart.xAxis().title('Last 24 Hours')
+    
     const lineChart = chart.line(dataMap)
         lineChart.stroke('2 black')
     const xlabels = chart.xAxis().labels();
@@ -74,9 +93,16 @@ async function makeChart () {                           //AnyChart Function. Loa
     const ylabels = chart.yAxis().labels();
         ylabels.fontFamily("'Source Sans Pro', sans-serif")
         ylabels.fontColor('black')
+        ylabels.format("${%value}")
+    const tooltip = chart.tooltip()
+        tooltip.width(250)
+        tooltip.height(100)
+        tooltip.fontFamily("'Source Sans Pro', sans-serif")
+        tooltip.adjustFontSize(true)
     rightList.append(chartDiv)
-    console.log(chartData)
         }
     }
 }
 )
+
+//Credit https://www.anychart.com/blog/2021/07/28/line-chart-js/
