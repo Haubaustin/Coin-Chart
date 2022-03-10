@@ -253,6 +253,7 @@ span > img {
     background-image: url(https://wallpapersmug.com/large/ba787c/black-dark-cubes-abstract.jpg);
     color: white;
     max-height: 295px;
+    box-shadow: #000000b7 -10px 0px 10px;
 }
 
 #topright > h4:nth-child(1) {
