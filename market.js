@@ -7,7 +7,7 @@ const clearColumn = document.querySelector('#Clear')
 const rightList = document.querySelector('.list')
 const trendingList = document.querySelector('#topleft')
 
-window.onload = async () => {
+window.onload = async () => {                           //Loads Trending List on Window Load
     const trending = await axios.get(`https://api.coingecko.com/api/v3/search/trending`)
     for (let i=0; i<trending.data.coins.length; i++) {
         const trend = document.createElement('div') 
@@ -15,15 +15,7 @@ window.onload = async () => {
         trend.classList.add("trending")
         trendingList.append(trend)
     }
-    console.log(trending)
-
 }
-
-
-
-
-
-
 
 clearColumn.addEventListener('click', () => {
     while (rightList.firstChild) {                     //Removes previous searches Right Column
@@ -67,7 +59,7 @@ async function makeChart () {                           //AnyChart Function. Loa
     const chartResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${chartInput}/market_chart?vs_currency=usd&days=1&interval=hourly`)
     const chartData = chartResponse.data.prices
     const chartDiv = document.createElement('div')
-    for (let i=0; i<chartData.length; i++) {
+    for (let i=0; i<chartData.length; i++) {            //Converts UNIX from API to Standard Date
         let nDate1 = chartData[i][0]
         let nDate = new Date(nDate1)
         chartData[i][0] = nDate.toString()
@@ -77,24 +69,24 @@ async function makeChart () {                           //AnyChart Function. Loa
          return chartData     
      }
     
-    const data = anychart.data.set(getData())
+    const data = anychart.data.set(getData())           
     const dataMap = data.mapAs({x:0, value:1})
     const chart = anychart.line()
         chart.container(chartDiv)
-        chart.background().enabled(true).fill('#b8b8b8b6').stroke('#000000').cornerType('round').corners(10) //Sets .fill('Background Color').stroke('Border COlor').cornerType('round').corners(10)
+        chart.background().enabled(true).fill('#b8b8b8b6').stroke('#000000').cornerType('round').corners(10) //Sets .fill('Background Color').stroke('Border Color').cornerType('round').corners(10)
         chart.draw()
         chart.yAxis().title('Price')
         chart.xAxis().title('Last 24 Hours')
     
-    const lineChart = chart.line(dataMap)
+    const lineChart = chart.line(dataMap)               //Chart Styling
         lineChart.stroke('2 black')
-    const xlabels = chart.xAxis().labels();
+    const xlabels = chart.xAxis().labels();             // X Axis
         xlabels.enabled(false)
-    const ylabels = chart.yAxis().labels();
+    const ylabels = chart.yAxis().labels();             // Y Axis
         ylabels.fontFamily("'Source Sans Pro', sans-serif")
         ylabels.fontColor('black')
         ylabels.format("${%value}")
-    const tooltip = chart.tooltip()
+    const tooltip = chart.tooltip()                     //Tooltip. Occurs on hover.
         tooltip.width(250)
         tooltip.height(100)
         tooltip.fontFamily("'Source Sans Pro', sans-serif")

@@ -4,6 +4,12 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+#topleft ::-webkit-scrollbar {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+  }
+
 body > header > nav > img {
     width: 40px;
     height: 40px;
@@ -239,8 +245,8 @@ span > img {
     white-space: nowrap;
     display: inline;
     scroll-snap-type: x mandatory;
+    padding-bottom: 0%;
 }
-
 #topright {
     grid-row-start: 2;
     height: 295px;
@@ -265,6 +271,8 @@ span > img {
     border-radius: 15%;
     vertical-align: middle;
     scroll-snap-align: center;
+    cursor: grab;
+    box-shadow: #0000008f -15px 10px 8px;
 }
 
 .trendingName {
@@ -273,4 +281,20 @@ span > img {
     border-bottom: 3px solid black;
 }
 
-/* Credit https://css-tricks.com/the-current-state-of-styling-scrollbars-in-css/ */
+#topleft::-webkit-scrollbar {
+    background-color: transparent;
+  }
+
+#topleft::-webkit-scrollbar-thumb:hover  {
+    box-shadow: #0000008f 0 -6px 8px inset;
+}
+
+
+#topleft::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.411);
+    border-radius: 3px;
+}
+
+/* Credit https://css-tricks.com/the-current-state-of-styling-scrollbars-in-css/ 
+https://css-tricks.com/almanac/properties/s/scrollbar/ 
+*/
