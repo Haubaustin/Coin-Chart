@@ -80,6 +80,9 @@ body > header > nav > img {
 #columnR > h3 > span {
     padding-left: 15px;
 }
+#columnR > div > div > table {
+    margin-bottom: 5px;
+}
 
 #columnR > h3 {
     padding-left: 30px;

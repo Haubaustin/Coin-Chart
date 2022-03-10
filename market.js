@@ -56,23 +56,25 @@ async function makeChart () {                           //AnyChart Function. Loa
       }
 
     function getData() {
-     
         return chartData     
     }
     
     const data = anychart.data.set(getData())
     const dataMap = data.mapAs({x:0, value:1})
     const chart = anychart.line()
+        chart.container(chartDiv)
+        chart.background().enabled(true).fill('#b8b8b8b6').stroke('#000000').cornerType('round').corners(10) //Sets .fill('Background Color').stroke('Border COlor').cornerType('round').corners(10)
+        chart.draw()
+        chart.yAxis().title('Price')
+        chart.xAxis().title('Last 24 Hours')
     const lineChart = chart.line(dataMap)
-    chart.container(chartDiv)
-    chart.background().enabled(true).fill('#b8b8b8b6').stroke('#000000').cornerType('round').corners(10) //Sets .fill('Background Color').stroke('Border COlor').cornerType('round').corners(10)
-    chart.draw()
-    chart.yAxis().title('Price')
-    chart.xAxis().title('Time')
+        lineChart.stroke('2 black')
+    const xlabels = chart.xAxis().labels();
+        xlabels.enabled(false)
+    const ylabels = chart.yAxis().labels();
+        ylabels.fontFamily("'Source Sans Pro', sans-serif")
+        ylabels.fontColor('black')
     rightList.append(chartDiv)
-
-
-    
     console.log(chartData)
         }
     }
