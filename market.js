@@ -36,7 +36,7 @@ button.addEventListener('click', async () =>{           //Event listener for sea
         thumb.innerHTML = `<img src="${response.data.coins[i].thumb}"</img>`
         leftColumn.append(results)
         results.append(thumb)
-        results.addEventListener('click', moveData,)     //Adds event listener to appended DOM element    
+        results.addEventListener('click', moveData)     //Adds event listener to appended DOM element    
 
 async function moveData () {                            //Function to expand info from left column to the right column
     const marketInput = `${response.data.coins[i].id}`
@@ -62,8 +62,8 @@ async function makeChart () {                           //AnyChart Function. Loa
     for (let i=0; i<chartData.length; i++) {            //Converts UNIX from API to Standard Date
         let nDate1 = chartData[i][0]
         let nDate = new Date(nDate1)
-        chartData[i][0] = nDate.toString()
-      }
+        chartData[i][0] = nDate.toString().substr(16,9) //Cuts Date out and only displays HH:MM:SS 
+    }
 
      function getData() {
          return chartData     
@@ -87,11 +87,13 @@ async function makeChart () {                           //AnyChart Function. Loa
         ylabels.fontColor('black')
         ylabels.format("${%value}")
     const tooltip = chart.tooltip()                     //Tooltip. Occurs on hover.
-        tooltip.width(250)
-        tooltip.height(100)
+        tooltip.width(150)
+        tooltip.height(50)
         tooltip.fontFamily("'Source Sans Pro', sans-serif")
-        tooltip.adjustFontSize(true)
+        tooltip.format("Price: {%value}")
     rightList.append(chartDiv)
+    
+    
         }
     }
 }
