@@ -98,5 +98,5 @@ async function makeChart () {                           //AnyChart Function. Loa
     }
 }
 )
-
 //Credit https://www.anychart.com/blog/2021/07/28/line-chart-js/
+//Cred Alex Barbossa ChartData Iteration and Unix Conversion
