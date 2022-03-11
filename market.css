@@ -335,6 +335,8 @@ span > img {
     }
     h4 {
         font-size: 12px;
+        margin-top: 0px;
+        padding-top: 10px;
     }
     header {
         height: 342px;
