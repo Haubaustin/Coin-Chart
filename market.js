@@ -45,30 +45,34 @@ async function moveData () {                            //Function to expand inf
     const marketHead = document.createElement('h2')
     marketHead.innerHTML =(`${response.data.coins[i].name}`)
     rightList.append(marketHead)
-    marketData.innerHTML = (`<img src="${marketResponse.data.image.small}"</img><br> 
+    marketData.innerHTML = (`<img src="${marketResponse.data.image.small}"><br> 
         <details><summary><strong>Description</strong></summary>${marketResponse.data.description.en}</details> <br> 
         <table><tr> <td><strong>Current Price:</strong> $${marketResponse.data.market_data.current_price.usd}</td> <td><strong>Hourly Change:</strong> ${marketResponse.data.market_data.price_change_percentage_1h_in_currency.usd}%</td> <td><strong>24hr Change:</strong> ${marketResponse.data.market_data.price_change_percentage_24h}%, $${marketResponse.data.market_data.price_change_24h}</td></tr>
         <tr> <td><strong>Market Cap:</strong> $${marketResponse.data.market_data.market_cap.usd}</td> <td><strong>Circulating Supply:</strong> ${marketResponse.data.market_data.circulating_supply}</td> <td><strong>Max Supply:</strong> ${marketResponse.data.market_data.max_supply}</td></tr>
         <tr> <td><strong>ATH:</strong> $${marketResponse.data.market_data.ath.usd}</td> <td><strong>Off ATH:</strong> ${marketResponse.data.market_data.ath_change_percentage.usd}%</td> <td><strong>Updated:</strong> ${marketResponse.data.last_updated}</tr></table>`)
     rightList.append(marketData)
-    makeChart()        
+    makeChart()       
     }
 
 async function makeChart () {                           //AnyChart Function. Loaded from AnyChart Module
     const chartInput = `${response.data.coins[i].id}`
     const chartResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${chartInput}/market_chart?vs_currency=usd&days=1&interval=hourly`)
-    const chartData = chartResponse.data.prices
+    // const candleResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${chartInput}/ohlc?vs_currency=usd&days=1`)
+    //DOM
     const chartDiv = document.createElement('div')
+    rightList.append(chartDiv)
+    // const candleDiv = document.createElement('div')
+    // rightList.append(candleDiv)
+    //Line Chart
+    const chartData = chartResponse.data.prices
     for (let i=0; i<chartData.length; i++) {            //Converts UNIX from API to Standard Date
         let nDate1 = chartData[i][0]
         let nDate = new Date(nDate1)
         chartData[i][0] = nDate.toString().substr(16,9) //Cuts Date out and only displays HH:MM:SS 
     }
-
-     function getData() {
-         return chartData     
-     }
-    
+            function getData() {
+                return chartData     
+            }
     const data = anychart.data.set(getData())           
     const dataMap = data.mapAs({x:0, value:1})
     const chart = anychart.line()
@@ -77,7 +81,6 @@ async function makeChart () {                           //AnyChart Function. Loa
         chart.draw()
         chart.yAxis().title('Price')
         chart.xAxis().title('Last 24 Hours')
-    
     const lineChart = chart.line(dataMap)               //Chart Styling
         lineChart.stroke('2 black')
     const xlabels = chart.xAxis().labels();             // X Axis
@@ -91,12 +94,8 @@ async function makeChart () {                           //AnyChart Function. Loa
         tooltip.height(50)
         tooltip.fontFamily("'Source Sans Pro', sans-serif")
         tooltip.format("Price: {%value}")
-    rightList.append(chartDiv)
-    
-    
+            }
+
         }
     }
-}
 )
-//Credit https://www.anychart.com/blog/2021/07/28/line-chart-js/
-//Cred Alex Barbossa ChartData Iteration and Unix Conversion

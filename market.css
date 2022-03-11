@@ -307,6 +307,11 @@ span > img {
   } 
 
 @media (max-width: 560px) {
+    body > header > nav > p {
+        margin-left: 10px;
+        display: block;
+        font-size: 10px;
+    }
     #Clear {
         font-size: 10px;
         box-sizing: none;
@@ -325,8 +330,14 @@ span > img {
     #columnR > h3 {
         padding-left: 0px;
     }
+    h1 {
+        font-size: 30px;
+    }
     h4 {
         font-size: 12px;
+    }
+    header {
+        height: 342px;
     }
     #searchResults > li {
         height: max-content;
@@ -365,7 +376,3 @@ span > img {
     animation: trendingScroll 30s linear infinite;
 }
 }
-/* Credit https://css-tricks.com/the-current-state-of-styling-scrollbars-in-css/ 
-https://css-tricks.com/almanac/properties/s/scrollbar/ 
-https://stackoverflow.com/questions/40698758/css-infinite-horizontal-scroll-with-keyframe
-*/
