@@ -244,10 +244,9 @@ span > img {
     height: 295px;
     max-height: 295px;
     overflow-y: hidden;
-    overflow-x: scroll;
+    overflow-x: auto;
     white-space: nowrap;
     display: inline;
-    scroll-snap-type: x mandatory;
     padding-bottom: 0%;
 }
 #topright {
@@ -270,12 +269,19 @@ span > img {
     display: inline-block;
     background-color: #b8b8b8b6;
     border: 3px solid black;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
     border-radius: 15%;
     vertical-align: middle;
     scroll-snap-align: center;
     box-shadow: #0000008f -15px 10px 8px;
+    animation: trendingScroll 18s linear infinite;
+}
+
+@keyframes trendingScroll {
+    0% {transform: translateX(-840px); }
+    50% {transform: translateX(20px);}
+    100% {transform: translateX(-840px);}
 }
 
 .trendingName {
@@ -284,23 +290,9 @@ span > img {
     border-bottom: 3px solid black;
 }
 
-#topleft::-webkit-scrollbar {
-    background-color: transparent;
-  }
-
-#topleft::-webkit-scrollbar-thumb:hover  {
-    box-shadow: #0000008f 0 -6px 8px inset;
-}
-
-
-#topleft::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.411);
-    border-radius: 3px;
-}
-
-/* Credit https://css-tricks.com/the-current-state-of-styling-scrollbars-in-css/ 
-https://css-tricks.com/almanac/properties/s/scrollbar/ 
-*/
+ #topleft::-webkit-scrollbar {
+    display: none;
+  } 
 
 @media (max-width: 560px) {
     #columnL {
@@ -330,3 +322,8 @@ https://css-tricks.com/almanac/properties/s/scrollbar/
         size-adjust: 75%;
     }
 }
+
+/* Credit https://css-tricks.com/the-current-state-of-styling-scrollbars-in-css/ 
+https://css-tricks.com/almanac/properties/s/scrollbar/ 
+https://stackoverflow.com/questions/40698758/css-infinite-horizontal-scroll-with-keyframe
+*/
