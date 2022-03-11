@@ -1,6 +1,18 @@
 .anychart-tooltip {
     font-size: 25px;
 }
+
+body > header > nav > p {
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-top: 10px;
+    color: rgba(128, 128, 128, 0.322);
+}
+
+body > header > nav > p > img {
+    height: 28px;
+}
+
 body {
     margin: 0;
     background-color: #3d3d3d9f;
@@ -279,9 +291,9 @@ span > img {
 }
 
 @keyframes trendingScroll {
-    0% {transform: translateX(-840px); }
-    50% {transform: translateX(20px);}
-    100% {transform: translateX(-840px);}
+    0% {transform: translateX(-480px); }
+    50% {transform: translateX(0%);}
+    100% {transform: translateX(-480px);}
 }
 
 .trendingName {
@@ -335,6 +347,24 @@ span > img {
     }    
 }
 
+@media (min-width: 561px) and (max-width: 900px) {
+    @keyframes trendingScroll {
+    0% {transform: translateX(-1000px); }
+    50% {transform: translateX(0%);}
+    100% {transform: translateX(-1000px);}
+}
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    @keyframes trendingScroll {
+    0% {transform: translateX(-850px); }
+    50% {transform: translateX(0px);}
+    100% {transform: translateX(-850px);}
+}
+.trending {
+    animation: trendingScroll 30s linear infinite;
+}
+}
 /* Credit https://css-tricks.com/the-current-state-of-styling-scrollbars-in-css/ 
 https://css-tricks.com/almanac/properties/s/scrollbar/ 
 https://stackoverflow.com/questions/40698758/css-infinite-horizontal-scroll-with-keyframe
