@@ -1,12 +1,9 @@
-.anychart-tooltip {
-    font-size: 25px;
-}
-
 body > header > nav > p {
     margin-bottom: 0px;
     margin-left: 10px;
     margin-top: 10px;
     color: rgba(128, 128, 128, 0.322);
+
 }
 
 body > header > nav > p > img {
@@ -18,12 +15,6 @@ body {
     background-color: #3d3d3d9f;
     font-family: 'Source Sans Pro', sans-serif;
 }
-
-#topleft ::-webkit-scrollbar {
-    background-color: blue;    /* color of the scroll thumb */
-    border-radius: 20px;       /* roundness of the scroll thumb */
-    border: 3px solid orange;  /* creates padding around scroll thumb */
-  }
 
 body > header > nav > img {
     width: 40px;
@@ -129,6 +120,8 @@ div > table {
     border-radius: .5em;
     text-align: left;
     margin-top: .5em;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 h1 {
@@ -273,7 +266,6 @@ span > img {
 #topright > h4:nth-child(1) {
     margin-top: 10px;
 }
-
 .trending {
     margin-top: 40px;
     height: 200px;
@@ -288,6 +280,7 @@ span > img {
     scroll-snap-align: center;
     box-shadow: #000000 -15px 10px 8px;
     animation: trendingScroll 18s linear infinite;
+    cursor: pointer;
 }
 
 @keyframes trendingScroll {
@@ -345,7 +338,10 @@ span > img {
         height: max-content;
     }
     #searchResults > li > span > img {
-        display: none;
+        height: 10px;
+        width: 10px;
+        margin-top: 5px;
+        margin-left: 5px;
     }
     #topright {
         background-size: cover;

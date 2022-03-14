@@ -14,6 +14,9 @@ window.onload = async () => {                           //Loads Trending List on
         trend.innerHTML = `<h4 class = trendingName>${trending.data.coins[i].item.name}</h4><br>${trending.data.coins[i].item.symbol}<br>MCAP Rank: ${trending.data.coins[i].item.market_cap_rank}<br><img src = "${trending.data.coins[i].item.small}"</img>`
         trend.classList.add("trending")
         trendingList.append(trend)
+        trend.addEventListener('click', () => {
+            userInput.value = `${trending.data.coins[i].item.name}`
+        })
     }
 }
 
@@ -57,12 +60,12 @@ async function moveData () {                            //Function to expand inf
 async function makeChart () {                           //AnyChart Function. Loaded from AnyChart Module
     const chartInput = `${response.data.coins[i].id}`
     const chartResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${chartInput}/market_chart?vs_currency=usd&days=1&interval=hourly`)
-    // const candleResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${chartInput}/ohlc?vs_currency=usd&days=1`)
+    const candleResponse = await axios.get(`https://api.coingecko.com/api/v3/coins/${chartInput}/ohlc?vs_currency=usd&days=1`)
     //DOM
     const chartDiv = document.createElement('div')
-    rightList.append(chartDiv)
-    // const candleDiv = document.createElement('div')
-    // rightList.append(candleDiv)
+        rightList.append(chartDiv)
+    const candleDiv = document.createElement('div')
+        rightList.append(candleDiv)
     //Line Chart
     const chartData = chartResponse.data.prices
     for (let i=0; i<chartData.length; i++) {            //Converts UNIX from API to Standard Date
@@ -84,7 +87,7 @@ async function makeChart () {                           //AnyChart Function. Loa
     const lineChart = chart.line(dataMap)               //Chart Styling
         lineChart.stroke('2 black')
     const xlabels = chart.xAxis().labels();             // X Axis
-        xlabels.enabled(false)
+        xlabels.enabled(true)
     const ylabels = chart.yAxis().labels();             // Y Axis
         ylabels.fontFamily("'Source Sans Pro', sans-serif")
         ylabels.fontColor('black')
@@ -94,8 +97,31 @@ async function makeChart () {                           //AnyChart Function. Loa
         tooltip.height(50)
         tooltip.fontFamily("'Source Sans Pro', sans-serif")
         tooltip.format("Price: {%value}")
+    //Candle Chart
+    const candleData = candleResponse.data
+    const dataSet = anychart.data.set(candleData)
+    const data1 = dataSet.mapAs({x: 0, open: 1, high: 2, low: 3, close: 4});
+    const candleChart = anychart.ohlc();
+    const series = candleChart.ohlc(data1)                 //Charted Data
+        series.risingStroke('black');
+        series.risingFill('black');
+        series.fallingStroke('white');
+        series.fallingFill('white');
+            candleChart.container(candleDiv)
+            candleChart.crosshair(true)
+            candleChart.crosshair().displayMode("Sticky")
+            candleChart.xScroller(true)
+            candleChart.xScroller().selectedFill('black 0.5')
+            candleChart.background().enabled(true).fill('#b8b8b8b6').stroke('#000000').cornerType('round').corners(10)
+            candleChart.yAxis().title('Price')
+            candleChart.draw();
+    const xAxisLabels = candleChart.xAxis().labels();             // X Axis
+        xAxisLabels.enabled(true)
+    const yAxisLabels = candleChart.yAxis().labels();             // Y Axis
+        yAxisLabels.fontFamily("'Source Sans Pro', sans-serif")
+        yAxisLabels.fontColor('black')
+        yAxisLabels.format("${%value}")
             }
-
         }
     }
 )
